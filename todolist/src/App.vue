@@ -47,6 +47,7 @@ export default {
         this.todoItems.unshift(localStorage.key(i));
       }
     }
+    this.todoItems.reverse();
   },
   components: {
     TodoList,
