@@ -29,7 +29,8 @@ export default {
   methods: {
     addTodo(todoItem) {
       localStorage.setItem(todoItem, todoItem);
-      this.todoItems.unshift(todoItem);
+      this.todoItems.push(todoItem);
+      this.todoItems.reverse();
       this.clearToggle = true;
     },
     removeTodo(todoItem, idx) {
@@ -44,7 +45,7 @@ export default {
   created() {
     if (localStorage.length > 0) {
       for (let i = 0; i < localStorage.length; i++) {
-        this.todoItems.unshift(localStorage.key(i));
+        this.todoItems.push(localStorage.key(i));
       }
     }
     this.todoItems.reverse();
