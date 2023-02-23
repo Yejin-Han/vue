@@ -94,8 +94,71 @@ export default {
 - script안의 component에 컴포넌트명: 컴포넌트변수명 적기
 
 
+
+230223 vue3
+
 //router
+//install 및 기본 구조
 - npm i vue-router@4
 - src/router/index.js 생성  -> component 호출, routes
 - main.js에 import router, App.use(router)
 - App.vue에 <router-view></router-view> 해서 사용
+
+//실제 설정
+//index.js
+import { createRouter, createWebHistory } from "vue-router";
+컴포넌트들 import,
+
+const routes = [
+  { path: "/본인이 지정하고싶은 이름", components: 해당 path에서 보여줄 component },
+  ...
+];
+const router = createRouter({
+  history: createWebHistory(),  //일종의 router의 인자라고 생각하셈
+  routes,
+});
+export { router };
+
+
+//main.js
+(추가)
+import { router } from "./router/index.js";
+(수정)
+createApp(App).mount('#app');
+↓
+const app = createApp(App);
+app.use(router);
+app.mount("#app");
+
+
+//App.vue
+template에
+<router-link to="/path">표시할 내용</router-link>
+...
+
+<router-view></router-view> //해당 path로 이동하면서 이 자리에 해당 component가 표시된다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
